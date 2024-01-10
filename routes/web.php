@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/sortBy', function () {
+    $collection = collect([
+        ['name' => 'Desk', 'price' => 200],
+        ['name' => 'Chair', 'price' => 100],
+        ['name' => 'Bookcase', 'price' => 150],
+    ]);
+
+    $sorted = $collection->sortBy('price');
+
+    return $sorted->values()->all();
+});
