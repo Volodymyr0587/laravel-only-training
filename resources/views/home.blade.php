@@ -10,18 +10,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-    <div class="m-2 flex justify-center items-center">
-
+<body class="bg-slate-200">
+    <div class="m-10 grid grid-cols-1 gap-4">
+        <h1 class="text-rose-600">HOME PAGE. FOR EXPERIMENTS 🤪</h1>
         <div>
-            <h1>HOME PAGE</h1>
-            <h3>FOR EXPERIMENTS 🤪</h3>
-
             <h4 class="m-4 font-bold ">Pluralize</h4>
-            @foreach (['apple', 'pond', 'level', 'field', 'car', 'task'] as $word)
+            @foreach (['apple', 'city', 'pond', 'level', 'field', 'car', 'task'] as $word)
                 <p>{{ $word }} => {{ Str::plural($word) }}</p>
             @endforeach
         </div>
+
+        <div>
+            <h4 class="m-4 font-bold ">$loop variable in foreach</h4>
+            @foreach (['apple', 'city', 'pond', 'level', 'field', 'car', 'task'] as $word)
+                <p>{{ $loop->iteration }}. {{ $word }} => {{ Str::plural($word) }}</p>
+            @endforeach
+        </div>
+
 
     </div>
 </body>
