@@ -34,6 +34,13 @@
             @endforeach
         </div>
 
+        <div>
+            <h4 class="m-4 font-bold ">Mutator</h4>
+            @foreach ( App\Models\Product::all() as $product)
+                <p>{{ $product->name }}</p>
+            @endforeach
+        </div>
+
     </div>
 </body>
 
