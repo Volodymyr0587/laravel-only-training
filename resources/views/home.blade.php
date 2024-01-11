@@ -41,6 +41,13 @@
             @endforeach
         </div>
 
+        <div>
+            <h4 class="m-4 font-bold ">All Users</h4>
+            @foreach ( App\Models\User::all() as $user)
+                <p>{{ $user->name }}</p>
+            @endforeach
+        </div>
+
     </div>
 </body>
 
