@@ -18,4 +18,12 @@ class Product extends Model
     {
         return '$' . number_format($value, 2);
     }
+
+    //* MUTATOR
+    //* In this example, the mutator ensures that name of product are stored
+    //* in lowercase.
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
 }
