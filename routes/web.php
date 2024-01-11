@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,12 @@ Route::get('/sortBy', function () {
     $sorted = $collection->sortBy('price');
 
     return $sorted->values()->all();
+});
+
+Route::get('/authors', function () {
+    $authors = Author::with('books')->get();
+
+    return $authors;
 });
 
 
