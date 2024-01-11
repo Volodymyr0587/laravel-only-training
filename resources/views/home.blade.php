@@ -27,6 +27,12 @@
             @endforeach
         </div>
 
+        <div>
+            <h4 class="m-4 font-bold ">Accessor</h4>
+            @foreach ( App\Models\Product::all() as $product)
+                <p>{{ $product->price }}</p>
+            @endforeach
+        </div>
 
     </div>
 </body>
