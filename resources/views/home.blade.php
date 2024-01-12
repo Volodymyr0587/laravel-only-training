@@ -50,8 +50,14 @@
 
         <div>
             <h4 class="m-4 font-bold ">Authors and their books</h4>
-            @foreach ( App\Models\User::all() as $user)
-                <p>{{ $user->name }}</p>
+            @foreach ( App\Models\Author::all() as $author)
+                <p class="text-green-600">Author: {{ $author->name }}</p>
+                <span>Books</span>
+                <ul>
+                    @foreach ($author->books as $book)
+                        <li class="pl-4">{{ $loop->iteration }}. {{ $book->title }}</li>
+                    @endforeach
+                </ul>
             @endforeach
         </div>
 
