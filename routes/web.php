@@ -2,6 +2,7 @@
 
 use App\Models\Author;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,6 @@ Route::get('/authors', function () {
 });
 
 
+Route::get('/posts', [PostController::class, "index"]);
+Route::get('/create', [PostController::class, "create"]);
+Route::post('/store', [PostController::class, "store"]);
