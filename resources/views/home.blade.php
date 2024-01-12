@@ -61,6 +61,13 @@
             @endforeach
         </div>
 
+        <div>
+            <h4 class="m-4 font-bold ">Str::mask</h4>
+            @foreach ( App\Models\User::all() as $user)
+                <p>{{ Str::mask($user->name, '*', 3) }}</p>
+            @endforeach
+        </div>
+
     </div>
 </body>
 
