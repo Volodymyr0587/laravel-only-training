@@ -3,6 +3,7 @@
 use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,8 @@ Route::get('/authors', function () {
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);
 Route::post('/store', [PostController::class, "store"]);
+
+
+Route::get('/product', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
