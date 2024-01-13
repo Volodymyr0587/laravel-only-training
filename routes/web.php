@@ -4,6 +4,7 @@ use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Number;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,10 @@ Route::post('/store', [PostController::class, "store"]);
 Route::get('/product', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+
+Route::get('/numberHelpers', function () {
+    $number = Number::abbreviate(1000);
+    return response()->json([
+        'number' => $number,
+    ]);
+});
