@@ -27,4 +27,20 @@ class ProductTest extends TestCase
         $response->assertSee('Create Product');
     }
 
+    public function test_it_shows_product_names_on_index_page(): void
+    {
+        $products = Product::factory(3)->create();
+
+        $response = $this->get('/product');
+
+        $response->assertStatus(200);
+
+        foreach ($products as $product) {
+            // Adjust the expected text based on the ProductObserver modification
+            $expectedText = preg_replace('/\s[^ ]+$/', '', $product->name);
+
+            $response->assertSee($expectedText);
+        }
+    }
+
 }
