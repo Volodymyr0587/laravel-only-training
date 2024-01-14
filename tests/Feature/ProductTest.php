@@ -43,4 +43,31 @@ class ProductTest extends TestCase
         }
     }
 
+    public function test_show_product_price_whit_dollar_sign(): void
+    {
+        $products = Product::factory(3)->create();
+
+        $response = $this->get('/product');
+
+        foreach ($products as $product) {
+            $response->assertSee('$');
+            $response->assertSee($product->price);
+
+        }
+    }
+
+    public function test_creating_product_slug(): void
+    {
+        $product = Product::create([
+            'name' => 'Product name',
+            'price' => '12',
+            'quantity' => 3,
+        ]);
+
+        $response = $this->get('/product');
+
+        $response->assertSee('Slug: product-name');
+
+    }
+
 }
