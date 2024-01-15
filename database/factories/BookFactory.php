@@ -19,7 +19,7 @@ class BookFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'author_id' => $this->faker->numberBetween(292, 301)
+            'author_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
