@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\User;
 use App\Models\Author;
+use Carbon\Carbon;
+use Illuminate\Support\Number;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
-use Illuminate\Support\Number;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +57,63 @@ Route::get('/numberHelpers', function () {
         'number' => $number,
     ]);
 });
+
+
+//*USER BIRTHDAY
+// Route::get('/usersBirthday', function () {
+//     foreach (User::all() as $user) {
+//         if ($user->birth_date->isBirthday()) {
+//             return response()->json([
+//                 'email' => $user->email
+//             ]);
+//         }
+//     }
+// });
+
+// Route::get('usersBirthdayFilter', function () {
+//     $users = User::all()->filter(function (User $user) {
+//         return $user->birth_date->isBirthday();
+//     });
+//     return $users->pluck('email');
+// });
+
+// Route::get('/usersBirthday', function () {
+//     return User::query()
+//         ->whereRaw('MONTH(birth_date) = ' . now()->month)
+//         ->whereRaw('DAY(birth_date) = ' . now()->day)
+//         // ->get();
+//         ->pluck('email');
+// });
+
+// Route::get('/usersBirthday', function () {
+//     return User::query()
+//         ->whereMonth('birth_date', now()->month)
+//         ->whereDay('birth_date', now()->day)
+//         // ->get();
+//         ->pluck('email');
+// });
+
+Route::get('/usersBirthday', function () {
+    // $today = today();
+    $today = Carbon::create('2024-12-30');
+    $curdate = $today->toDateString();
+
+    $untilDay = $today->copy()->addDays(7)->dayOfYear;
+    if ($today->dayOfYear < $untilDay) {
+        $users = User::query()
+            ->whereRaw('DAYOFYEAR("'.$curdate.'") <= DAYOFYEAR(birth_date)
+                AND DAYOFYEAR("'.$curdate.'") + 7 >= DAYOFYEAR(birth_date)')
+                // ->get()
+                ->pluck('email');
+        return $users;
+    } else {
+        $users = User::query()
+            ->whereRaw('DAYOFYEAR("'.$curdate.'") <= DAYOFYEAR(birth_date)
+                AND 366 >= DAYOFYEAR(birth_date)')
+                ->orWhereRaw('DAYOFYEAR(birth_date) <= ' . $untilDay)
+                // ->get()
+                ->pluck('email');
+        return $users;
+    }
+});
+
