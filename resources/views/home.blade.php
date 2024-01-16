@@ -71,7 +71,10 @@
         <div>
             <h4 class="m-4 font-bold ">Custom helper function</h4>
             {!! generateList([1, 2 , 3]) !!}
+
+            {{ helloWorld() }}
         </div>
+
 
     </div>
 </body>

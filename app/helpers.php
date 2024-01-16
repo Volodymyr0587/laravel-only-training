@@ -14,3 +14,10 @@ if (!function_exists('generateList')) {
         return $html;
     }
 }
+
+if (!function_exists('helloWorld')) {
+    function helloWorld()
+    {
+        return "Hello World";
+    }
+}
