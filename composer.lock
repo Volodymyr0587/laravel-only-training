@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9161361d3e4a1cb5ad6f2befc60f3e7f",
+    "content-hash": "dd019a00a53aadf24047358b3c1f889c",
     "packages": [
         {
             "name": "brick/math",
@@ -6044,6 +6044,54 @@
                 }
             ],
             "time": "2022-03-08T17:03:00+00:00"
+        },
+        {
+            "name": "volodymyr0587/posts",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Volodymyr0587/posts.git",
+                "reference": "2f125111871bb1bbbb986a21582cb5358ea58e64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Volodymyr0587/posts/zipball/2f125111871bb1bbbb986a21582cb5358ea58e64",
+                "reference": "2f125111871bb1bbbb986a21582cb5358ea58e64",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Volodymyr0587\\Posts\\Providers\\PostsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Volodymyr0587\\Posts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr0587",
+                    "email": "email@example.com",
+                    "homepage": "https://github.com/Volodymyr0587"
+                }
+            ],
+            "description": "description",
+            "support": {
+                "issues": "https://github.com/Volodymyr0587/posts/issues",
+                "source": "https://github.com/Volodymyr0587/posts/tree/1.0"
+            },
+            "time": "2024-01-16T11:26:01+00:00"
         },
         {
             "name": "webmozart/assert",
