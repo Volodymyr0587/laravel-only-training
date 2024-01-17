@@ -36,6 +36,12 @@
                                 <td> {{ $post->id }} </td>
                                 <td> {{ $post->title }} </td>
                                 <td> {!! html_entity_decode($post->body) !!} </td>
+                                <td>Likes: {{ $post->likes()->count() }}
+                                    <form action="{{ route('post.like', $post->id) }}" method="post">
+                                        @csrf
+                                        <button type="submit">Like</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

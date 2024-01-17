@@ -45,6 +45,7 @@ Route::get('/authors', function () {
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);
 Route::post('/store', [PostController::class, "store"]);
+Route::post('/posts/{post}/like', [PostController::class, 'addLikeToPost'])->name('post.like');
 
 
 Route::get('/product', [ProductController::class, 'index'])->name('products.index');

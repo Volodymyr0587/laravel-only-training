@@ -13,4 +13,9 @@ class Post extends Model
         'title',
         'body',
     ];
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
