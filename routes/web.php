@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShowProductController;
 use App\Models\User;
 use App\Models\Author;
 use Carbon\Carbon;
@@ -51,6 +52,7 @@ Route::post('/posts/{post}/like', [PostController::class, 'addLikeToPost'])->nam
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('/product/{id}', ShowProductController::class)->name('products.show');
 
 Route::get('/numberHelpers', function () {
     $number = Number::abbreviate(1000);
