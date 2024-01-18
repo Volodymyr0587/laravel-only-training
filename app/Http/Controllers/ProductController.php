@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -20,13 +21,9 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Product $product, Request $request)
+    public function store(Product $product, StoreProductRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer',
-        ]);
+        $validatedData = $request->validated();
         $product->create($validatedData);
 
         return to_route('products.index')->with('success', 'Game is successfully saved');
