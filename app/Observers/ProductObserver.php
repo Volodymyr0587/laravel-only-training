@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 
 class ProductObserver
 {
@@ -18,6 +19,17 @@ class ProductObserver
     }
 
     /**
+     * Handle the Product "updated" event.
+     *
+     * @param  \App\Models\Product  $product
+     * @return void
+     */
+    public function updating(Product $product): void
+    {
+        $product->slug = \Str::slug($product->name);
+    }
+
+    /**
      * Handle the Product "created" event.
      *
      * @param  \App\Models\Product  $product
@@ -25,16 +37,17 @@ class ProductObserver
      */
     public function created(Product $product): void
     {
-        $product->name .= ' id' .$product->id;
+        $message = "New Product Created. Name: $product->name ID: $product->id";
+        Log::info($message);;
     }
 
     /**
      * Handle the Product "updated" event.
      */
-    public function updated(Product $product): void
-    {
-        //
-    }
+    // public function updated(Product $product): void
+    // {
+    //     $product->slug = \Str::slug($product->name);
+    // }
 
     /**
      * Handle the Product "deleted" event.
