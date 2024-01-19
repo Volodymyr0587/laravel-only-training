@@ -26,6 +26,25 @@ class ProductController extends Controller
         $validatedData = $request->validated();
         $product->create($validatedData);
 
-        return to_route('products.index')->with('success', 'Game is successfully saved');
+        return to_route('products.index')->with('success', 'Product is successfully saved');
+    }
+
+    public function edit(Product $product)
+    {
+        return view('products.edit', compact('product'));
+    }
+
+    public function update(Product $product, StoreProductRequest $request)
+    {
+        $validatedData = $request->validated();
+        $product->update($validatedData);
+
+        return to_route('products.index')->with('success', 'Product is successfully updated');
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return back();
     }
 }
