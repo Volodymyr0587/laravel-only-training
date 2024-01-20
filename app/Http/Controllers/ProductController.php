@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -46,5 +47,19 @@ class ProductController extends Controller
     {
         $product->delete();
         return back();
+    }
+
+    public function search(Request $request)
+    {
+        // Get the search value from teh request
+        $search = $request->input('search');
+
+        $query = Product::query()
+            ->latest()
+            ->select(['id', 'name', 'slug','price', 'quantity'])
+            ->where(function (Builder $subQuery) use ($search) {
+                $subQuery->where("name", "LIKE", "%{$search}%");
+            });
+        return view('products.search', ['products' => $query->get()]);
     }
 }

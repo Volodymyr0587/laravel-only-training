@@ -55,6 +55,7 @@ Route::post('/products/store', [ProductController::class, 'store'])->name('produ
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
 Route::get('/product/{id}', ShowProductController::class)->name('products.show');
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 Route::get('/numberHelpers', function () {

@@ -10,13 +10,7 @@
 <body class="bg-slate-400">
     <h1 class="text-2xl font-bold">Products</h1>
 
-    <form action="{{ route('products.search') }}" method="GET">
-        <label for="search">Search productcs</label>
-        <input type="text" id="search" name="search">
-        <button class="p-2 bg-blue-400 rounded-lg" type="submit">Search</button>
-    </form>
 
-    <a href="{{ route('products.create') }}" class="text-blue-500 font-bold hover:underline">Create Product</a>
     @foreach ($products as $product)
         <div>
             <p>Name: <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a></p>
