@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShapeController;
 use App\Http\Controllers\ShowProductController;
 use App\Models\User;
 use App\Models\Author;
@@ -64,6 +65,11 @@ Route::get('/numberHelpers', function () {
         'number' => $number,
     ]);
 });
+
+
+//* SHAPES ROUTES
+Route::get('/shapes', [ShapeController::class, 'index'])->name('shapes.index');
+Route::post('/shapes/calculate', [ShapeController::class, 'calculate'])->name('calculate');
 
 
 //*USER BIRTHDAY
