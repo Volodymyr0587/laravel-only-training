@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ShapeController;
 use App\Http\Controllers\ShowProductController;
 use App\Models\User;
@@ -70,6 +71,9 @@ Route::get('/numberHelpers', function () {
 //* SHAPES ROUTES
 Route::get('/shapes', [ShapeController::class, 'index'])->name('shapes.index');
 Route::post('/shapes/calculate', [ShapeController::class, 'calculate'])->name('calculate');
+
+//*QUEUE TESTING (throw sending email)
+Route::match(['get', 'post'], '/queuetest', [MailController::class, 'sendMail'])->name('sendMail');
 
 
 //*USER BIRTHDAY
