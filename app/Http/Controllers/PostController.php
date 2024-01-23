@@ -6,6 +6,7 @@ use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -24,20 +25,24 @@ class PostController extends Controller
             'body' => 'required',
         ]);
 
-        Post::create([
+        $user = auth()->user();
+
+        $post = $user->posts()->create([
             "title"  =>  $request->title,
-            "body" => $request->body
+            "body" => $request->body,
+            'user_id' => auth()->user()->id,
         ]);
 
         return back()->with("success", "Post has been created");
     }
 
-    public function addLikeToPost(Post $post, User $user)
+    public function addLikeToPost(Post $post)
     {
+        $user = Auth::user();
         // Check if the user has already liked the post
         if ( ! $post->likes()->where('user_id', $user->id)->exists()) {
-            $like = new Like(['user_id' => $user->id]);
-            $post->likes()->save($like);
+            $post->likes()->create(['user_id' => $user->id]);
+            return redirect()->back();
         }
 
         return redirect()->back();
