@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\ShapeController;
-use App\Http\Controllers\ShowProductController;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Author;
-use Carbon\Carbon;
 use Illuminate\Support\Number;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ShapeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShowProductController;
+use App\Http\Controllers\Auth\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,16 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('home');
+});
+
+//* LOGIN / REGISTER
+Route::controller(LoginRegisterController::class)->group(function() {
+    Route::get('/register', 'register')->name('registerUser');
+    Route::post('/storeUser', 'store')->name('storeUser');
+    Route::get('/loginUser', 'login')->name('loginUser');
+    Route::post('/authenticate', 'authenticate')->name('authenticateUser');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::post('/logout', 'logout')->name('logoutUser');
 });
 
 Route::get('/sortBy', function () {
