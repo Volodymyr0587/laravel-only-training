@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Counter;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Author;
@@ -55,6 +56,7 @@ Route::get('/authors', function () {
     return $authors;
 });
 
+Route::get('/counter', Counter::class);
 
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);
