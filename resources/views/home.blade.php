@@ -13,6 +13,8 @@
 <body class="bg-slate-200">
     <div class="m-10 grid grid-cols-1 gap-4">
         <h1 class="text-rose-600">HOME PAGE. FOR EXPERIMENTS 🤪</h1>
+
+        @livewire('date-time')
         <div>
             <h4 class="m-4 font-bold ">Pluralize</h4>
             @foreach (['apple', 'city', 'pond', 'level', 'field', 'car', 'task'] as $word)
