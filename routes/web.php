@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Livewire\Counter;
 use App\Livewire\DynamicInputs;
 use Carbon\Carbon;
@@ -73,6 +74,9 @@ Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);
 Route::post('/store', [PostController::class, "store"]);
 Route::post('/posts/{post}/like', [PostController::class, 'addLikeToPost'])->name('post.like');
+
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');

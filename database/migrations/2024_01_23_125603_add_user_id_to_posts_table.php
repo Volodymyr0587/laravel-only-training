@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             // Remove foreign key constraint temporarily
-            $table->dropForeign(['user_id']);
+            // $table->dropForeign(['user_id']);
              // Add the foreign key column
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
