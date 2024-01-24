@@ -57,9 +57,17 @@ Route::get('/authors', function () {
     return $authors;
 });
 
-Route::get('/counter', Counter::class);
 
-Route::get('/inputs', DynamicInputs::class);
+//* LIVEWIRE ROUTES
+
+Route::get('/livewire', function () {
+    return view('livewire.index');
+})->name('livewire');
+
+Route::get('/counter', Counter::class)->name('counter');
+Route::get('/inputs', DynamicInputs::class)->name('inputs');
+
+//*END LIVEWIRE ROUTES
 
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);

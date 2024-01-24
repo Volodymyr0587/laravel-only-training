@@ -14,7 +14,11 @@
     <div class="m-10 grid grid-cols-1 gap-4">
         <h1 class="text-rose-600">HOME PAGE. FOR EXPERIMENTS 🤪</h1>
 
-        @livewire('date-time')
+        <div>
+            <a href="{{ route('livewire') }}" class="p-2 m-2 border rounded-2xl bg-indigo-500">Livewire experiments >>></a>
+        </div>
+
+
         <div>
             <h4 class="m-4 font-bold ">Pluralize</h4>
             @foreach (['apple', 'city', 'pond', 'level', 'field', 'car', 'task'] as $word)
