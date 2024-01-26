@@ -50,7 +50,7 @@ class PostController extends Controller
     {
         $user = Auth::user();
         // Check if the user has already liked the post
-        if ( ! $post->likes()->where('user_id', $user->id)->exists()) {
+        if ( ! $post->likes()->where('user_id', $user->id)->exists() && ($post->user_id !== $user->id) ) {
             $post->likes()->create(['user_id' => $user->id]);
             return redirect()->back();
         }
