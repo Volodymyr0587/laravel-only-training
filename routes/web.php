@@ -73,6 +73,7 @@ Route::get('/inputs', DynamicInputs::class)->name('inputs');
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);
 Route::post('/store', [PostController::class, "store"]);
+Route::get('/posts/{id}',[PostController::class, 'show'])->name('posts.show');
 Route::post('/posts/{post}/like', [PostController::class, 'addLikeToPost'])->name('post.like');
 
 

@@ -12,6 +12,17 @@
 
 <body class="bg-slate-200">
     <div class="m-10 grid grid-cols-1 gap-4">
+        @if (auth()->check())
+            <p>Welcome, {{ auth()->user()->name }}</p>
+            <form action="{{ route('logoutUser') }}" method="POST">
+                @csrf
+                <button type="submit">LOGOUT</button>
+            </form>
+        @else
+            <a href="{{ route('registerUser') }}">REGISTER</a>
+            <a href="{{ route('loginUser') }}">LOGIN</a>
+        @endif
+
         <h1 class="text-rose-600">HOME PAGE. FOR EXPERIMENTS 🤪</h1>
 
         <div>

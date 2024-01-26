@@ -31,9 +31,19 @@ class PostController extends Controller
             "title"  =>  $request->title,
             "body" => $request->body,
             'user_id' => auth()->user()->id,
+            'viewer' => 0,
         ]);
 
         return back()->with("success", "Post has been created");
+    }
+
+    public function show($id)
+    {
+        $post = Post::find($id);
+
+        $post->increment('viewer');
+
+        return view('posts.show', compact('post'));
     }
 
     public function addLikeToPost(Post $post)
