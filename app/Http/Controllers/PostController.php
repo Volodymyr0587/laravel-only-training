@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index() {
-        $posts =  Post::with('categories')->orderBy("id", "desc")->paginate(10);
+        $posts =  Post::with('categories')->orderBy("id", "desc")->paginate(5);
         return view("posts.index", compact("posts"));
     }
 
