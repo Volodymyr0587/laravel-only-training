@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index() {
-        $posts =  Post::orderBy("id", "desc")->paginate(10);
+        $posts =  Post::with('categories')->orderBy("id", "desc")->paginate(10);
         return view("posts.index", compact("posts"));
     }
 
@@ -33,6 +34,13 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
             'viewer' => 0,
         ]);
+
+        $categories = explode(" ", $request->categories);
+
+        foreach ($categories as $categoryName) {
+            $category = Category::firstOrCreate(['name' => $categoryName]);
+            $post->categories()->attach($category->id);
+        }
 
         return back()->with("success", "Post has been created");
     }

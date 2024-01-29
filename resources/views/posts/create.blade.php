@@ -38,6 +38,10 @@
                                     <label> Body </label>
                                     <textarea class="form-control" id="content" placeholder="Enter the Description" rows="5" name="body"></textarea>
                                 </div>
+                                <div class="form-group">
+                                    <label> Categories (separate by space) </label>
+                                    <input type="text" class="form-control" name="categories" placeholder="Enter the Title">
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success"> Save </button>

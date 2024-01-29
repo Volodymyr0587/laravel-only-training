@@ -28,6 +28,7 @@
                             <th> Id </th>
                             <th style="width:30%;"> Title </th>
                             <th> Content </th>
+                            <th>Categories</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,13 @@
                                 <td> {{ $post->id }} </td>
                                 <td> <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a> </td>
                                 <td> {!! html_entity_decode($post->body) !!} </td>
+                                <td>
+                                    <ul>
+                                        @foreach($post->categories as $category)
+                                        <li>{{ $category->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
                                 <td>Likes: {{ $post->likes()->count() }}
                                     <form action="{{ route('post.like', $post->id) }}" method="post">
                                         @csrf
