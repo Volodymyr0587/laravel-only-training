@@ -176,3 +176,28 @@ Route::get('/each', function () {
     });
 });
 
+Route::get('/items/{category}', function ($category) {
+
+    $itemsByCategory = [
+        'health' => [
+            'Band-Aids',
+            'Baby Powder',
+            'Tylenol'
+        ],
+        'tech' => [
+            'GoPro Action Camera',
+            'FitBit Fitness Watch',
+            'Nintendo Switch'
+        ],
+        'books' => [
+            'The Martian',
+            'TheGreat Gatsby',
+            'Joy Luck Club'
+        ]
+    ];
+
+    $items = array_key_exists($category, $itemsByCategory) ? $itemsByCategory[$category] : ['No such category'];
+
+    return view('items')->with(['items' => $items,'category' => $category]);
+});
+
