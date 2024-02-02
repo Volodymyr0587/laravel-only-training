@@ -163,3 +163,16 @@ Route::get('/usersBirthday', function () {
     }
 });
 
+
+//* each() for iteration
+Route::get('/each', function () {
+    $items = ['apple', 'banana', 'orange', 'pear'];
+    collect($items)->each(function ($item, $key) {
+        echo "$key: $item";
+
+        if ($item === 'orange'){
+            return false;
+        }
+    });
+});
+
