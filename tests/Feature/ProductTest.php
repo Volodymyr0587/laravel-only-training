@@ -15,14 +15,14 @@ class ProductTest extends TestCase
      */
     public function test_products_route_return_ok(): void
     {
-        $response = $this->get('/product');
+        $response = $this->get('/products');
 
         $response->assertStatus(200);
     }
 
     public function test_user_can_see_create_product_link(): void
     {
-        $response = $this->get('/product');
+        $response = $this->get('/products');
 
         $response->assertSee('Create Product');
     }
@@ -31,7 +31,7 @@ class ProductTest extends TestCase
     {
         $products = Product::factory(3)->create();
 
-        $response = $this->get('/product');
+        $response = $this->get('/products');
 
         $response->assertStatus(200);
 
@@ -47,7 +47,7 @@ class ProductTest extends TestCase
     {
         $products = Product::factory(3)->create();
 
-        $response = $this->get('/product');
+        $response = $this->get('/products');
 
         foreach ($products as $product) {
             $response->assertSee('$');
@@ -64,7 +64,7 @@ class ProductTest extends TestCase
             'quantity' => 3,
         ]);
 
-        $response = $this->get('/product');
+        $response = $this->get('/products');
 
         $response->assertSee('Slug: product-name');
 
