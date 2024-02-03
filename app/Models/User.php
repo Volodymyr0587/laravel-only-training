@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'birth_date',
+        'active',
     ];
 
     /**
@@ -55,5 +56,10 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
     }
 }

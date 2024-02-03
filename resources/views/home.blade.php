@@ -66,6 +66,13 @@
         </div>
 
         <div>
+            <h4 class="m-4 font-bold ">Active Users</h4>
+            @foreach ( App\Models\User::active()->get() as $user)
+                <p>{{ $user->name }}</p>
+            @endforeach
+        </div>
+
+        <div>
             <h4 class="m-4 font-bold ">Authors and their books</h4>
             @foreach ( App\Models\Author::all() as $author)
                 <p class="text-green-600">Author: {{ $author->name }}</p>
