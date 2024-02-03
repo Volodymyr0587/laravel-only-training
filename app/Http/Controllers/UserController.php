@@ -12,4 +12,9 @@ class UserController extends Controller
         $users = User::all();
         return view('users.users', compact('users'));
     }
+
+    public function get_users_json()
+    {
+        return User::all();
+    }
 }

@@ -176,4 +176,5 @@ Route::get('/each', function () {
     });
 });
 
+Route::get('/users-json', [UserController::class, 'get_users_json'])->name('users.json');
 
