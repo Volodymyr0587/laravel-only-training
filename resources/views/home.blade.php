@@ -76,7 +76,7 @@
             <h4 class="m-4 font-bold ">Authors and their books</h4>
             @foreach ( App\Models\Author::all() as $author)
                 <p class="text-green-600">Author: {{ $author->name }}</p>
-                <span>Books</span>
+                <span>Books ({{ $author->books->count() }})</span>
                 <ul>
                     @foreach ($author->books as $book)
                         <li class="pl-4">{{ $loop->iteration }}. {{ $book->title }}</li>
