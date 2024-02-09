@@ -103,6 +103,18 @@
             {{ helloWorld() }}
         </div>
 
+        <div>
+            <h4 class="m-4 font-bold ">Number format</h4>
+           
+            @php
+                $numbers = [123432432, 433123422345, 1223423234, 999324672740, 234873243, 2343242465, 2092137623];
+            @endphp
+            @foreach ($numbers as $number)
+                <p>{{ Number::format($number) }} - {{ Number::forHumans($number) }}</p>
+            @endforeach
+            
+        </div>
+
 
     </div>
 </body>
