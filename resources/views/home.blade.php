@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{ app()->version() }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-slate-200">
     <div class="m-10 grid grid-cols-1 gap-4">
+        <ul>
+            <li>PHP: {{ phpversion() }}</li>
+            <li>Laravel: {{ app()->version() }}</li>
+        </ul>
         @if (auth()->check())
             <p>Welcome, {{ auth()->user()->name }}</p>
             <form action="{{ route('logoutUser') }}" method="POST">
