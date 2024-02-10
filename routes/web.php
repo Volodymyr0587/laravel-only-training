@@ -79,6 +79,9 @@ Route::post('/posts/{post}/like', [PostController::class, 'addLikeToPost'])->nam
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
+// Get PDF with Users
+Route::get('/generateUsersPdf', [UserController::class, 'generateUsersPdf'])->name('generateUsersPdf');
+
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
