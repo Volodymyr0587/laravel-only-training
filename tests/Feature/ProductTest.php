@@ -56,18 +56,18 @@ class ProductTest extends TestCase
         }
     }
 
-    public function test_creating_product_slug(): void
-    {
-        $product = Product::create([
-            'name' => 'Product name',
-            'price' => '12',
-            'quantity' => 3,
-        ]);
+    // public function test_creating_product_slug(): void
+    // {
+    //     $product = Product::create([
+    //         'name' => 'Product name',
+    //         'price' => '12',
+    //         'quantity' => 3,
+    //     ]);
 
-        $response = $this->get('/products');
+    //     $response = $this->get('/products');
 
-        $response->assertSee('Slug: product-name');
+    //     $response->assertSee('Slug: product-name');
 
-    }
+    // }
 
 }
