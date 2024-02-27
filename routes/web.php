@@ -190,3 +190,10 @@ Route::get('/fake', function () {
         echo fake()->unique()->safeEmail() . "<br>";
     }
 });
+
+//* Arr::wrap()
+Route::get('/arr-wrap', function () {
+    $string = 'Laravel';
+    $array = Arr::wrap($string);
+    return $array;
+});
