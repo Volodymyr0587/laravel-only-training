@@ -31,7 +31,7 @@ Route::get('/', function () {
 });
 
 //* LOGIN / REGISTER
-Route::controller(LoginRegisterController::class)->group(function() {
+Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('registerUser');
     Route::post('/storeUser', 'store')->name('storeUser');
     Route::get('/loginUser', 'login')->name('loginUser');
@@ -73,7 +73,7 @@ Route::get('/inputs', DynamicInputs::class)->name('inputs');
 Route::get('/posts', [PostController::class, "index"]);
 Route::get('/create', [PostController::class, "create"]);
 Route::post('/store', [PostController::class, "store"]);
-Route::get('/posts/{id}',[PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/posts/{post}/like', [PostController::class, 'addLikeToPost'])->name('post.like');
 
 
@@ -150,18 +150,18 @@ Route::get('/usersBirthday', function () {
     $untilDay = $today->copy()->addDays(7)->dayOfYear;
     if ($today->dayOfYear < $untilDay) {
         $users = User::query()
-            ->whereRaw('DAYOFYEAR("'.$curdate.'") <= DAYOFYEAR(birth_date)
-                AND DAYOFYEAR("'.$curdate.'") + 7 >= DAYOFYEAR(birth_date)')
-                // ->get()
-                ->pluck('email');
+            ->whereRaw('DAYOFYEAR("' . $curdate . '") <= DAYOFYEAR(birth_date)
+                AND DAYOFYEAR("' . $curdate . '") + 7 >= DAYOFYEAR(birth_date)')
+            // ->get()
+            ->pluck('email');
         return $users;
     } else {
         $users = User::query()
-            ->whereRaw('DAYOFYEAR("'.$curdate.'") <= DAYOFYEAR(birth_date)
+            ->whereRaw('DAYOFYEAR("' . $curdate . '") <= DAYOFYEAR(birth_date)
                 AND 366 >= DAYOFYEAR(birth_date)')
-                ->orWhereRaw('DAYOFYEAR(birth_date) <= ' . $untilDay)
-                // ->get()
-                ->pluck('email');
+            ->orWhereRaw('DAYOFYEAR(birth_date) <= ' . $untilDay)
+            // ->get()
+            ->pluck('email');
         return $users;
     }
 });
@@ -173,7 +173,7 @@ Route::get('/each', function () {
     collect($items)->each(function ($item, $key) {
         echo "$key: $item";
 
-        if ($item === 'orange'){
+        if ($item === 'orange') {
             return false;
         }
     });
@@ -181,3 +181,12 @@ Route::get('/each', function () {
 
 Route::get('/users-json', [UserController::class, 'get_users_json'])->name('users.json');
 
+//* fake()
+Route::get('/fake', function () {
+    for ($i = 0; $i < 10; $i++) {
+        echo "<b>Name</b><br>";
+        echo fake()->name() . "<br>";
+        echo "<b>Email</b><br>";
+        echo fake()->unique()->safeEmail() . "<br>";
+    }
+});
