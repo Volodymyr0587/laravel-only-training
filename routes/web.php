@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\UserController;
-use App\Livewire\Counter;
-use App\Livewire\DynamicInputs;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Author;
+use App\Livewire\Counter;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Number;
+use App\Livewire\DynamicInputs;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShapeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShowProductController;
@@ -28,6 +29,10 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 
 Route::get('/', function () {
     return view('home');
+});
+
+Route::get('/modal', function () {
+    return view('modal');
 });
 
 //* LOGIN / REGISTER
