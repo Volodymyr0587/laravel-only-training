@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Author;
 use App\Livewire\Counter;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Number;
 use App\Livewire\DynamicInputs;
 use Illuminate\Support\Facades\Route;
@@ -201,4 +202,12 @@ Route::get('/arr-wrap', function () {
     $string = 'Laravel';
     $array = Arr::wrap($string);
     return $array;
+});
+
+
+//* REDIS
+Route::get('/redis', function () {
+    // Redis::set('key', 'value');
+    // Redis::del('key');
+    // return Redis::get('key');
 });
